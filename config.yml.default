@@ -17,9 +17,11 @@ engine:                                   # Engine settings.
       - "/path/to/gaviota"
     max_pieces: 5                         # Count of max pieces in the local gaviota endgame tablebases.
   uci_options:                            # Arbitrary UCI options passed to the engine. (Commenting allowed)
-    Move Overhead: 100                    # Increase if your bot flags games too often.
+    Move Overhead: 500                    # Increase if your bot flags games too often.
     Threads: 4                            # Max CPU threads the engine can use.
     Hash: 256                             # Max memory (in megabytes) the engine can allocate.
+    #Use NNUE: true           # allow bot to use neural networks
+    #EvalFile: nn-29ca55b36ddc.nnue     # shogi neural networks file
   variants:
     enabled: false                        # Activate seperate engine for other chess variants than standard and chess960.
     dir: "./engines"                      # Directory containing the engine.
@@ -31,14 +33,14 @@ engine:                                   # Engine settings.
       Threads: 4                          # Max CPU threads the engine can use.
       Hash: 256                           # Max memory (in megabytes) the engine can allocate.
   opening_books:
-    enabled: false                        # Activate opening books.
+    enabled: true                        # Activate opening books.
     books:
-      white:                              # List of names of books to use as white.
-        - "Perfect2021"
-      black:                              # List of names of books to use as black.
-        - "Cerebellum3Merge"
+#     white:                              # List of names of books to use as white.
+#       - "WhiteBook"
+#     black:                              # List of names of books to use as black.
+#       - "BlackBook"
       standard:                           # List of names of books to use if there is no specific book for white, black or chess960.
-        - "Cerebellum3Merge"
+        - "Perfect2021" 
 #     chess960:                           # List of names of books to use for chess960.
 #       - "Chess960Book"
 #     Use the same pattern for 'antichess', 'atomic', 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
@@ -55,7 +57,7 @@ engine:                                   # Engine settings.
       selection: "performance"            # Move selection is "performance" or "win_rate".
 #     max_depth: 16                       # Half move max depth. (Comment this line for max depth)
     chessdb:
-      enabled: true                       # Activate online moves from https://chessdb.cn/queryc_en/
+      enabled: false                      # Activate online moves from https://chessdb.cn/queryc_en/
       min_eval_depth: 10                  # Minimum evaluation depth. Only for selection: "best".
       min_time: 20                        # Time the bot must have at least to use the online move.
       timeout: 5                          # Time the server has to respond.
@@ -69,7 +71,7 @@ engine:                                   # Engine settings.
       timeout: 5                          # Time the server has to respond.
 #     max_depth: 16                       # Half move max depth. (Comment this line for max depth)
     online_egtb:
-      enabled: true                      # Activate online endgame tablebases from Lichess.
+      enabled: false                      # Activate online endgame tablebases from Lichess.
       min_time: 10                        # Time the bot must have at least to use the online move.
       timeout: 3                          # Time the server has to respond.
   offer_draw:
@@ -112,11 +114,11 @@ challenge:                                # Incoming challenges. (Commenting all
     - rated                               # Rated games
   human_modes:                            # Game modes to accept against humans.
     - casual                              # Unrated games.
-    - rated                               # Rated games
+#    - rated                               # Rated games
 
 matchmaking:
   initial_time: 60                        # Initial time for matchmaking mode.
-  increment: 1                            # Increment time for matchmaking mode.
+  increment: 0                            # Increment time for matchmaking mode.
   rated: true                             # Activate rated games in matchmaking mode.
   timeout: 10                             # Time until a challenge is canceled.
   variants:                               # Chess variants (https://lichess.org/variant) to challenge.
@@ -135,4 +137,3 @@ matchmaking:
 
 books:                                    # Names of the opening books (to be used above in the opening_books section) and paths to the opening books.
   Perfect2021: "/engines/Perfect2021.bin"
-  Cerebellum3Merge: "/Cerebellum3Merge.bin"
