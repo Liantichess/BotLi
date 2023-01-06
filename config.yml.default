@@ -17,7 +17,7 @@ engine:                                   # Engine settings.
       - "/path/to/gaviota"
     max_pieces: 5                         # Count of max pieces in the local gaviota endgame tablebases.
   uci_options:                            # Arbitrary UCI options passed to the engine. (Commenting allowed)
-    Move Overhead: 500                    # Increase if your bot flags games too often.
+    Move Overhead: 100                    # Increase if your bot flags games too often.
     Threads: 4                            # Max CPU threads the engine can use.
     Hash: 256                             # Max memory (in megabytes) the engine can allocate.
     #Use NNUE: true           # allow bot to use neural networks
@@ -89,8 +89,8 @@ move_overhead_multiplier: 1.0             # Increase if your bot flags games too
 challenge:                                # Incoming challenges. (Commenting allowed)
   concurrency: 1                          # Number of games to play simultaneously.
   bullet_with_increment_only: true       # Whether bullet games against BOTs should only be accepted with increment.
-# min_increment: 0                        # Minimum amount of increment to accept a challenge.
-# max_increment: 180                      # Maximum amount of increment to accept a challenge.
+  min_increment: 1                        # Minimum amount of increment to accept a challenge.
+  max_increment: 180                      # Maximum amount of increment to accept a challenge.
 # min_initial: 0                          # Minimum amount of initial time to accept a challenge.
 # max_initial: 315360000                  # Maximum amount of initial time to accept a challenge.
   variants:                               # Chess variants to accept (https://lichess.org/variant).
@@ -105,10 +105,10 @@ challenge:                                # Incoming challenges. (Commenting all
 #   - racingKings
 #   - threeCheck
   time_controls:                          # Time controls to accept.
-    - bullet
+#   - bullet
     - blitz
     - rapid
-#   - classical
+    - classical
   bot_modes:                              # Game modes to accept against BOTs.
     - casual                              # Unrated games.
     - rated                               # Rated games
@@ -117,8 +117,8 @@ challenge:                                # Incoming challenges. (Commenting all
 #    - rated                               # Rated games
 
 matchmaking:
-  initial_time: 60                        # Initial time for matchmaking mode.
-  increment: 0                            # Increment time for matchmaking mode.
+  initial_time: 25                        # Initial time for matchmaking mode.
+  increment: 1                            # Increment time for matchmaking mode.
   rated: true                             # Activate rated games in matchmaking mode.
   timeout: 10                             # Time until a challenge is canceled.
   variants:                               # Chess variants (https://lichess.org/variant) to challenge.
@@ -131,8 +131,8 @@ matchmaking:
 #   - kingOfTheHill
 #   - racingKings
 #   - threeCheck
-# min_rating_diff: 0                      # Minimum rating distance to opponent. (Commenting allowed)
-# max_rating_diff: 300                    # Maximum rating distance to opponent. (Commenting allowed)
+  min_rating_diff: 0                      # Minimum rating distance to opponent. (Commenting allowed)
+  max_rating_diff: 3400                    # Maximum rating distance to opponent. (Commenting allowed)
   delay: 0                                # Time in seconds the bot must be idle before a new challenge is started.
 
 books:                                    # Names of the opening books (to be used above in the opening_books section) and paths to the opening books.
