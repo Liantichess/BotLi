@@ -87,7 +87,7 @@ engine:                                   # Engine settings.
 move_overhead_multiplier: 1.0             # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     
 challenge:                                # Incoming challenges. (Commenting allowed)
-  concurrency: 20                         # Number of games to play simultaneously.
+  concurrency: 2                         # Number of games to play simultaneously.
   bullet_with_increment_only: false       # Whether bullet games against BOTs should only be accepted with increment.
 #  min_increment: 1                        # Minimum amount of increment to accept a challenge.
 # max_increment: 180                      # Maximum amount of increment to accept a challenge.
@@ -105,7 +105,7 @@ challenge:                                # Incoming challenges. (Commenting all
 #   - racingKings
 #   - threeCheck
   time_controls:                          # Time controls to accept.
-#   - bullet
+    - bullet
     - blitz
     - rapid
     - classical
