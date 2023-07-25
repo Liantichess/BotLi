@@ -1,11 +1,9 @@
+from collections.abc import Iterator
 from queue import Empty, Queue
 from threading import Thread
-from typing import Iterator
 
 from api import API
-from api_challenge_response import API_Challenge_Reponse
-from challenge_request import Challenge_Request
-from challenge_response import Challenge_Response
+from botli_dataclasses import API_Challenge_Reponse, Challenge_Request, Challenge_Response
 
 
 class Challenger:
@@ -36,6 +34,12 @@ class Challenger:
                 elif response.has_reached_rate_limit:
                     print(f'Challenge against {challenge_request.opponent_username} failed due to Lichess rate limit.')
                     yield Challenge_Response(success=False, has_reached_rate_limit=True)
+                elif response.invalid_initial:
+                    print('Challenge failed due to invalid initial time.')
+                    yield Challenge_Response(success=False, is_misconfigured=True)
+                elif response.invalid_increment:
+                    print('Challenge failed due to invalid increment time.')
+                    yield Challenge_Response(success=False, is_misconfigured=True)
 
                 # End of api challenge response
                 return
