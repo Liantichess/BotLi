@@ -20,8 +20,6 @@ engine:                                   # Engine settings.
     Move Overhead: 200                    # Increase if your bot flags games too often.
     Threads: 2                            # Max CPU threads the engine can use.
     Hash: 128                             # Max memory (in megabytes) the engine can allocate.
-    Use NNUE: true           # allow bot to use neural networks
-    EvalFile: nn-4ffa203f3b58.nnue
   variants:
     enabled: true                        # Activate seperate engine for other chess variants than standard and chess960.
     dir: "./engines/"                      # Directory containing the engine.
