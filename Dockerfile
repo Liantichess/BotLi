@@ -23,4 +23,4 @@ RUN wget "https://drive.google.com/u/0/uc?id=1Tiq8FqSu7eiekE2iaWQzSdJPg-mhvLzJ&e
 RUN wget "https://tests.stockfishchess.org/api/nn/nn-4ffa203f3b58.nnue" -O engines/nn-4ffa203f3b58.nnue
 
 # Add the "--matchmaking" flag to start the matchmaking mode.
-CMD python3 user_interface.py
+CMD python3 user_interface.py --matchmaking
