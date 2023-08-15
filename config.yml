@@ -49,9 +49,9 @@ engine:                                   # Engine settings.
 #   max_depth: 16                         # Half move max depth. (Comment this line for max depth)
   online_moves:
     opening_explorer:
-      enabled: true                      # Activate online moves from Lichess opening explorer. The move that has performed best for this bot is played.
+      enabled: false                      # Activate online moves from Lichess opening explorer. The move that has performed best for this bot is played.
       priority: 200 # Priority with which this move source is used. Higher priority is used first.
-      use_for_variants: true             # Whether the Lichess opening explorer should be used for other variants than standard and chess960.
+      use_for_variants: false             # Whether the Lichess opening explorer should be used for other variants than standard and chess960.
       min_time: 60                        # Time the bot must have at least to use the online move.
       timeout: 5                          # Time the server has to respond.
       min_games: 5                        # Minimum number of games in which the position must have occurred.
@@ -69,7 +69,7 @@ engine:                                   # Engine settings.
 #     max_depth: 16                       # Half move max depth. (Comment this line for max depth)
 #     max_moves: 1                        # Max number of moves played from chessdb. (Comment this line for max moves)
     lichess_cloud:
-      enabled: true                      # Activate online moves from Lichess cloud eval.
+      enabled: false                      # Activate online moves from Lichess cloud eval.
       priority: 100 # Priority with which this move source is used. Higher priority is used first.
       only_without_book: false            # Whether the cloud should only be used if there is no matching book.
       min_eval_depth: 10                  # Minimum evaluation depth.
